@@ -4,8 +4,10 @@ FROM php:8.2-cli
 # Set the working directory in the container
 WORKDIR /app
 
-# Install dependencies including intl extension
-RUN apt-get update && apt-get install -y libicu-dev && \
+# Install dependencies including git and intl extension
+RUN apt-get update && apt-get install -y \
+    git \
+    libicu-dev && \
     docker-php-ext-install intl
 
 # Copy composer.json and composer.lock first to install dependencies
