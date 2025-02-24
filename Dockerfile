@@ -17,4 +17,4 @@ RUN composer install --no-interaction
 COPY . .
 
 # Set the command to run your PHP application
-CMD ["php", "/app/src/index.php"]
+CMD ["php", "src/index.php"]
