@@ -4,7 +4,11 @@ FROM php:8.0-cli
 # Set the working directory in the container
 WORKDIR /app
 
-# Copy the composer.json and composer.lock first to install dependencies
+# Install dependencies including intl extension
+RUN apt-get update && apt-get install -y libicu-dev && \
+    docker-php-ext-install intl
+
+# Copy composer.json and composer.lock first to install dependencies
 COPY composer.json composer.lock ./
 
 # Install Composer (PHP dependency manager)
